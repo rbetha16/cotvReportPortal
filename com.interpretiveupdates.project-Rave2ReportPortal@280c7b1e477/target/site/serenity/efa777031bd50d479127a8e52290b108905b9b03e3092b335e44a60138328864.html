@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">
+<![endif]--><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script><link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.4/media/jqueryui/dataTables.jqueryui.css" rel="Stylesheet"/>
+<link type="text/css" href="css/tables.css" rel="stylesheet" />
+
+<script type="text/javascript" src="datatables/1.10.4/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.4/media/jqueryui/dataTables.jqueryui.min.js"></script>
+    <script class="code" type="text/javascript">$(document).ready(function () {
+
+        // Results table
+        $('#tag-list-table').DataTable( {
+            "order": [
+                [ 1, "asc" ]
+            ],
+            "pageLength": 25
+        } );
+
+        $("test-list").tabs();
+    });
+    </script>
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-bdd-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname"></span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs"><a href="index.html">Home</a> 
+                > Features
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 20-05-2020 12:46</span>
+    <br style="clear:left"/>
+</div>
+
+
+
+   <div class="clr"></div>
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+                <table>
+                 <tr>
+                   <td>
+                    <div id="test-list">
+                        <ul>
+                            <li><a href="test-list-1">Features</a></li>
+                        </ul>
+                    </div>
+                    <div id="test-list-1" class="table">
+                        <div class="test-results">
+                            <table id="tag-list-table">
+                                <thead>
+                                    <tr>
+                                        <th width="30" class="test-results-heading">&nbsp;</th>
+                                        <th width="750" class="test-results-heading">Feature</th>
+                                        <th width="70" class="test-results-heading">Tests</th>
+                                        <th width="70" class="test-results-heading">Steps</th>
+                                        <th width="65" class="test-results-heading">Fail</th>
+                                        <th width="65" class="test-results-heading">Pend</th>
+                                        <th width="65" class="test-results-heading">Skip</th>
+                                        <th width="65" class="test-results-heading">Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Claims Inquiry Tool</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="882e0fb1727d604d239e55543072258d8a6b3695251aee7f8c963e6761876155.html">Claims Inquiry Tool</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">11</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">45.71</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Customer Service Interface</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="9ebd5ef0673c35694dbca3bfa1c759e1c43bd96f7745f2cda893d58927731063.html">Customer Service Interface</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">10</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">42.15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>ISAI</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="bad39247dc30e098cf9344788d7ca0e1a5a6f927686b86a6f5eee797368e1fec.html">Isai</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">9</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">42.138</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>PROD Smoke Test Builder ARD Applications</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="c1ebd1e31c6c5ec1cee80f07c99a0193117301da8eb2c824fc518fe26e13bf70.html">Prod Smoke Test Builder Ard Applications</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">6</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.178</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>PROD Smoke Test for DA Application</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="9c28bc375b808c75e30cb3133c4fc294113d2c20c8fb80d7a0da93d8346840f0.html">Prod Smoke Test For Da Application</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">10</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>PROD Smoke Test for Publisher Application</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="9e74febd1422cc73a32c64859ae64532ed7d55bf07e594ae40f1b909d648318b.html">Prod Smoke Test For Publisher Application</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">6</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.201</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>PROD Smoke Test for RDA Applications</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="8acf498d10624c50d0f7cd302aec6294db1f54cb35b5bdcc0b99ed81905ce831.html">Prod Smoke Test For Rda Applications</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">6</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for Client Inquiry</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="612ae521865901f5c29846f149f56fdf296b319ae56b0b4317c8dfce3d079692.html">Production Smoke Test For Client Inquiry</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">7</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for CPT ICD Links</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="3f894063bfcf43faba160773e9f85b536fd073bd27ac23778d08dff940b96df4.html">Production Smoke Test For Cpt Icd Links</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">7</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for CPW</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-FAILURE">
+                                        <td><span class="summary-icon"/><i class='fa fa-times-circle failure-icon fa-2x' title='FAILURE'></i></span><span style="display:none">FAILURE</span></td>
+                                        <td class="FAILURE-text"><a href="0187aae9da1e8eaafd2f302985000b7be0a7fc5e0abbc0b833efb133cf7dcf4d.html">Production Smoke Test For Cpw</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">7</td>
+
+                                        <td class="redtext">1</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">63.405</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for Impact Analysis</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="52d9b53d83b938149df9722feb667f9eff49afbc3f8e1b39853519b16f8adef5.html">Production Smoke Test For Impact Analysis</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">7</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for Interpretive Update</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="c6d98140eb19983ccda03ee7acc1c444c78a6641ffb24c01a45337561b3941ba.html">Production Smoke Test For Interpretive Update</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">8</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for Medicaid</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-FAILURE">
+                                        <td><span class="summary-icon"/><i class='fa fa-times-circle failure-icon fa-2x' title='FAILURE'></i></span><span style="display:none">FAILURE</span></td>
+                                        <td class="FAILURE-text"><a href="d8f1ee3e9fc20fac411397b3856d8c44556ee71ad10e12f8d1c3394951bcec2e.html">Production Smoke Test For Medicaid</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">8</td>
+
+                                        <td class="redtext">1</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.251</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for Presentation Manager</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="d3cad1f161d2b80e19b3d0187f6ed3e22d8c4aa0bae0c31816e716be92eac838.html">Production Smoke Test For Presentation Manager</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">10</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.232</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Production Smoke Test for Rule Relationship</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="053c91f4d0ff6337e02e686a308497f3c312407b1e03cc8ae56b58706bf28662.html">Production Smoke Test For Rule Relationship</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">8</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.191</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Provider LookUp Tool</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="b2de7492d6e062d74903d26e74c27fcc0b9ef5958142547b07e669b575a8af94.html">Provider Lookup Tool</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">13</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">42.175</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>Security Manager</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="8fee1880eb6f0796a4a2740e3a20b2c492d65504b335180666564c3f33421e1b.html">Security Manager</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">6</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">42.139</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>To Validate Client Profile basic functionality through Smoke Testing</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="6fde2661d949089af74176631ddf9679c8128aa69925c407ec10a969ffb2c24d.html">To Validate Client Profile Basic Functionality Through Smoke Testing</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">5</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.154</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>To Validate CTA basic functionality through Smoke Testing</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="6b3c4dfffd8698d76e52b98d2ca9e72045929de5de8658608d7778d335067f97.html">To Validate Cta Basic Functionality Through Smoke Testing</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">15</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">21.241</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><h3>What If Tool</h3></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+                                    <tr class="test-ERROR">
+                                        <td><span class="summary-icon"/><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></span><span style="display:none">ERROR</span></td>
+                                        <td class="ERROR-text"><a href="7fd413d52a1920736008593fdb076d0033a4be638f335b5be64d707cb3677a9a.html">What If Tool</a></td>
+
+                                        <td class="lightgreentext">1</td>
+                                        <td class="lightgreentext">6</td>
+
+                                        <td class="redtext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="bluetext">0</td>
+                                        <td class="lightgreentext">42.081</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   </td>
+                  </tr>
+                 </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter"></div>
+
+</body>
+</html>

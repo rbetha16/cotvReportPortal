@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Requirements</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">
+<![endif]--><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script><link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.4/media/jqueryui/dataTables.jqueryui.css" rel="Stylesheet"/>
+<link type="text/css" href="css/tables.css" rel="stylesheet" />
+
+<script type="text/javascript" src="datatables/1.10.4/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.4/media/jqueryui/dataTables.jqueryui.min.js"></script><!-- jQplot -->
+<!--[if IE]>
+<script language="javascript" type="text/javascript" src="excanvas/3/excanvas.compiled.js"></script>
+<![endif]--><link rel="stylesheet" type="text/css" href="jqplot/1.0.8/jquery.jqplot.min.css"/>
+<script type="text/javascript" src="jqplot/1.0.8/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="jqplot/1.0.8/plugins/jqplot.pieRenderer.min.js"></script>
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function () {
+        var plot1 = $.jqplot('coverage_pie_chart', [
+            [
+                ['Passing', 0],
+                ['Pending', 0],
+                ['Ignored', 0],
+                ['Failing', 0.1],
+                ['Errors',  0.9],
+                ['Compromised Tests',  0],
+            ]
+        ], {
+            gridPadding: {top: 0, bottom: 38, left: 0, right: 0},
+            seriesColors: ['#30cb23',
+                
+                '#a2f2f2',
+                
+                '#eeeadd',
+                
+                '#f8001f',
+                
+                '#fc6e1f',
+                'fuchsia'],
+            seriesDefaults: {
+                renderer: $.jqplot.PieRenderer,
+                trendline: {show: false},
+                rendererOptions: {padding: 8, showDataLabels: true}
+            },
+            legend: {
+                show: true,
+                placement: 'outside',
+                rendererOptions: {
+                    numberRows: 3
+                },
+                location: 's',
+                marginTop: '15px'
+            },
+            series: [
+                {label: '0% requirements tested successfully'},
+                {label: '0% requirements untested'},
+                {label: '10%} requirements failing'},
+                {label: '90%} requirements with errors'},
+                {label: '0%} requirements with compromised tests'}
+            ]
+        });
+        // Results table
+        $('#test-results-table').DataTable({
+            "order": [
+                [ 1, "asc" ]
+            ],
+            "pageLength": 100,
+            "lengthMenu": [ [50, 100, 200, -1] , [50, 100, 200, "All"] ]
+        });
+
+        // Results table
+        $('#req-results-table').DataTable({
+            "order": [
+                [ 1, "asc" ]
+            ],
+            "pageLength": 100,
+            "lengthMenu": [ [50, 100, 200, -1] , [50, 100, 200, "All"] ]
+        });
+
+        $('#examples-table').DataTable({
+            "order": [
+                [2, "asc"]
+            ],
+            "pageLength": 25
+        });
+        $("#tabs").tabs();
+        $("#test-tabs").tabs();
+    })
+    ;
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".read-more-link").click(function () {
+                $(this).nextAll("div.read-more-text").toggle();
+                var isrc = $(this).find("img").attr('src');
+                if (isrc == 'images/plus.png') {
+                    $(this).find("img").attr("src", function () {
+                        return "images/minus.png";
+                    });
+                } else {
+                    $(this).find("img").attr("src", function () {
+                        return "images/plus.png";
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-bdd-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname"></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+            <a href='index.html'>Home</a>
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li >
+            <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li class="active">
+            <a href="#"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 20-05-2020 12:46</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+
+                <div id="requirements-summary">
+                    <div id="coverage_pie_chart"
+                         style="margin-top:10px; margin-left:10px; width:250px; height:250px;"></div>
+                    <div id="coverage_summary">
+                        <div>
+                            <h4>Requirements Overview</h4>
+                            <table class="summary-table">
+                                <head>
+                                    <tr>
+                                        <th>Requirement Type</th>
+                                        <th>Total</th>
+                                        <th>Pass&nbsp;<i class="icon-check"></i></th>
+                                        <th>Fail&nbsp;<i class="icon-thumbs-down"></i></th>
+                                        <th>Pending&nbsp;<i class="icon-calendar"></i></th>
+                                        <th>Ignored&nbsp;<i class="icon-ban-circle"></i></th>
+                                        <th>Untested&nbsp;<i class="icon-question"></i></th>
+                                    </tr>
+                                </head>
+                                <body>
+                                <tr>
+                                    <td class="summary-leading-column">Acceptance Criteria (tests)</td>
+                                    <td>20</td>
+                                    <td>0</td>
+                                    <td>20</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                </tr>
+                                </body>
+                            </table>
+                        </div>
+
+
+
+
+
+<div>
+    <h4>Test Result Summary</h4>
+    <table class="summary-table">
+        <head>
+            <tr>
+                <th>Test Type</th>
+                <th>Total</th>
+                <th>Pass&nbsp;<i class="icon-check"/> </th>
+                <th>Fail&nbsp;<i class="icon-thumbs-down"/></th>
+                <th>Pending&nbsp;<i class="icon-calendar"/></th>
+                <th>Ignored&nbsp;<i class="icon-ban-circle"/></th>
+            </tr>
+        </head>
+        <body>
+        <tr>
+            <td class="summary-leading-column">Automated</td>
+            <td>20</td>
+            <td>0 (0%)</td>
+            <td>20 (100%)</td>
+            <td>0 (0%)</td>
+            <td>0 (0%)</td>
+        </tr>
+        <tr>
+            <td class="summary-leading-column">Manual</td>
+            <td>0</td>
+            <td>0 (0%)</td>
+            <td>0 (0%)</td>
+            <td>0 (0%)</td>
+            <td>0 (0%)</td>
+        </tr>
+        <tr>
+            <td class="summary-leading-column">Total</td>
+            <td>20</td>
+            <td>0 (0%)</td>
+            <td>20 (10%)</td>
+            <td>0 (0%)</td>
+            <td>0 (0%)</td>
+        </tr>
+        <tr>
+            <td class="summary-leading-column">Total Duration</td>
+                <td colspan="5">9 minutes 55 seconds</td>
+        </tr>
+        </body>
+    </table>
+</div>
+                    </div>
+                </div>
+                <div class="clr"></div>
+
+                <div id="tabs">
+<table>
+    <tr>
+        <td>
+            <div><h3>Acceptance Criteria</h3></div>
+            <div id="test_list_tests" class="table">
+                <div class="test-results">
+                    <table id="test-results-table">
+                        <thead>
+                        <tr>
+                            <th width="50" class="test-results-heading">&nbsp;</th>
+                            <th width="%" class="test-results-heading">Tests</th>
+                            <th width="70" class="test-results-heading">Steps</th>
+
+                                <th width="65" class="test-results-heading">Fail</th>
+                                <th width="65" class="test-results-heading">Error</th>
+                                <th width="65" class="test-results-heading">Comp</th>
+                                <th width="65" class="test-results-heading">Pend</th>
+                                <th width="65" class="test-results-heading">Ignore</th>
+                                <th width="65" class="test-results-heading">Skip</th>
+                            <th width="100" class="test-results-heading">Duration<br>(seconds)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="2e669c9334999a84c21bfd34fcb5af2a82fc0cc34e33ab4cc620dfdd4440b600.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Builder ARD  
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">6</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">4</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.18</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="df8ff76e80f4bcff346d846ba738065d4dc8458101a027b76ce2c9e1b474b1c4.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    CPTICDLink Application Smoke 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">7</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">4</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.17</td>
+                            </tr>
+
+                            <tr class="test-FAILURE">
+                                <td><span class="summary-icon"><i class='fa fa-times-circle failure-icon ' title='FAILURE'></i></span>
+                                    
+                                    <span style="display:none">FAILURE</span></td>
+                                <td class="FAILURE-text">
+                                    <div class="ellipsis">
+                                    <a href="d85674ef64e692962d23ef8978ebf4483f8eb91f64339a080ae6a32361330fea.html" class="ellipsis" title="Assertion error: OpportunityRunsGrid ...">
+                                    CPW Smoke Test - TC13471 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">7</td>
+
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">2</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">63.41</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="3cfc2f65b3ccb13627bcff375485edbccdf538bdddb8c6f92aa5175ac1bac8af.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    ClientProfile Basic Smoke for Daily Max Unit Visits 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">5</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">3</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.15</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="245b08e0b856d9cb2729fb7c56beaa71268dd4e27d6f61d24dc6d9a200153a7a.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    DA  
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">10</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">7</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.19</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="5f36b729117973c6394ff01797b2e24de8279a3ff7a5463ca39e108d390176ab.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Enter Data in All the Lines and Verify Claim Detail Screen 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">13</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">9</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">42.18</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="55bd3a19dfa535f1caf76e36ddb5783e5e0190390b1e4b835228260d9d43ab62.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Health checks for client facing apps in production 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">7</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">4</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.17</td>
+                            </tr>
+
+                            <tr class="test-FAILURE">
+                                <td><span class="summary-icon"><i class='fa fa-times-circle failure-icon ' title='FAILURE'></i></span>
+                                    
+                                    <span style="display:none">FAILURE</span></td>
+                                <td class="FAILURE-text">
+                                    <div class="ellipsis">
+                                    <a href="685c9eb82ab7e62acd2b28b7232f8bc6d3800fc24a71485faf66f5eeca6e07f9.html" class="ellipsis" title="Assertion error: FAILED">
+                                    Medicaid Application Smoke Testing 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">8</td>
+
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">5</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.25</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="32f86b44e9c439b3e63ada53d58b39c19eba871e080fd55860efbb0abd0d7976.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Production Smoke Test for Interpretive Update 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">8</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">5</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.27</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="1605a63d469e8bcc6c423966c0de85fca7c274ffe375dff681231fcae7ac567a.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Publisher 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">6</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">4</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.2</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="c4c71015230dfe119999ae13c6125a313bf30036459e7314f7167731f45f34d3.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    RDA Loader  
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">6</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">3</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.12</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="bb4f7ff96962370d9ff4c9350d043f5c2ad7b81fca02cf41eca34afbc4cf66aa.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    SC_01_Verify Data displayed on Claim Detail, Claim Line Detail, Referring Claim and Recommendation Line Screen for a given Payer Short 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">11</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">7</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">45.71</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="a198a3c623d15b66011f896827b6b708beb0e749ed759f80f60acbcc0a3f60c3.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    SC_02 To Validate Security Manager able to update CIT Security and CIT Admin Levels 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">6</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">3</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">42.14</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="70f4d797e2401105162db2fa893f8e397a079abf34e93d2e83a3555b7ffcea7e.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    SC_04 To Validate Different Search using User, LName and Payer 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">9</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">5</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">42.14</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="e6edc518bb18394c9ad68d6f500b8c98ff7dd2f0c55b1f49a8eafad807cfe687.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    SC_04 Verify the Supplementary Data displayed on claim screen,claim line screen and Recommended Line detail screen for a given Payer Short 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">10</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">6</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">42.15</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="86a695c5f32035fa9411977d754a64067bb3ae4b94fd74c61779108ad5968535.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    SmokeTest Ability to login to Presentation Manager Application 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">10</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">7</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.23</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="69e34e3f68595b6ee961c77af78677a74b9e97750a320fd244856977cad48257.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    TESLA-20505 - Ability to launch the Impact Analysis screen (TCNo- TESLA-20529) (TESLA-20505, TESLA-20529)
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">7</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">4</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.2</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="0d83e3049c8a8349ef0ac41841940821d6a9bc2e45b0e1e908f61aa5949c46bb.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    US26536- Create a New Relationship Group 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">8</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">6</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.19</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="78df6092e28b25659675fee34696d50eb028983f4242d75424bf6afe94b5aade.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Validate the smoke functinolity for CTA(Client Team Assignments) 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">15</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">13</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">21.24</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+                                    <a href="bbff259bc82d4755ace62f03f0d8f25cdd69069bccf76c82d2780908ef0b9500.html" class="ellipsis" title="Unreachable browser exception: Could ...">
+                                    Validate user is able to login to WIT application 
+                                    </a></div>
+                                </td>
+
+                                <td class="lightgreentext">6</td>
+
+                                    <td class="redtext">0</td>
+                                    <td class="redtext">1</td>
+                                    <td class="redtext">0</td>
+                                    <td class="bluetext">0</td>
+                                    <td class="bluetext">2</td>
+                                    <td class="bluetext">0</td>
+
+                                <td class="lightgreentext">42.08</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 1.1.37-rc.6</span>
+</div>
+</body>
+</html>
